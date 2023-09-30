@@ -1,0 +1,253 @@
+﻿<Window x:Class="Сalculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Сalculator"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="400"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="True"
+        
+        MouseLeftButtonDown="Window_MouseRightButtonDown"
+        ResizeMode="NoResize">
+    <Border BorderBrush="Brown" 
+            BorderThickness="5" 
+            CornerRadius="10"
+            Background="#4c566a">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="5"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="25"/>
+                    <ColumnDefinition Width="25"/>
+                    <ColumnDefinition Width="5"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Calculator"
+                            Foreground="Tomato"
+                            HorizontalAlignment="Center"
+                            FontSize="20"
+                            FontFamily="Montserrat"
+                            Grid.Column="0"
+                            VerticalAlignment="Center"
+                            Margin="10,5,0,0"/>
+
+                <Button x:Name="btnMinimize"                           
+                            BorderThickness="0"
+                            Content="-"
+                            Foreground="White"
+                            FontSize="16"
+                            FontFamily="Montserrat"
+                            Cursor="Hand"
+                            Grid.Column="1"
+                            Click="btnMinimize_Click">
+
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#28AEED"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#278BEF"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="18" Height="18"
+                                        CornerRadius="9"
+                                        Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+
+                </Button>
+
+                <Button x:Name="btnClose"                          
+                            BorderThickness="0"
+                            Content="X"
+                            Foreground="White"
+                            FontSize="12"
+                            FontFamily="Montserrat"
+                            Cursor="Hand"
+                            Grid.Column="2"
+                            Click="btnClose_Click">
+
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#DA34AE"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#C62DAE"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="18" Height="18"
+                                        CornerRadius="9"
+                                        Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            
+            <Grid Grid.Row="1">
+                <Border BorderBrush="DarkGray"
+                             BorderThickness="0,0,0,3"/>
+            </Grid>
+
+            <Grid Grid.Row="3">
+                <Grid.RowDefinitions >
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.ColumnSpan="4" Text="0"
+                           x:Name="box1"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Bottom"
+                           Padding="0,0,10,10"
+                           FontSize="50"
+                           Foreground="Black"
+                           />
+                <Button Grid.Row="2" Grid.Column="0" Content="7" 
+                        Style="{DynamicResource BtnStyle}"
+                        Click="btnEvents"
+                        Template="{DynamicResource BtnTemplate}"/>
+
+                <Button Grid.Row="2" Grid.Column="1" Content="8" 
+                        Style="{DynamicResource BtnStyle}"
+                        Click="btnEvents"
+                        Template="{DynamicResource BtnTemplate}"/>
+
+                <Button Grid.Row="2" Grid.Column="2" Content="9" 
+                        Style="{DynamicResource BtnStyle}"
+                        Click="btnEvents"
+                        Template="{DynamicResource BtnTemplate}"/>
+
+                <Button Grid.Row="3" Grid.Column="0" Content="4" 
+                        Style="{DynamicResource BtnStyle}"
+                        Click="btnEvents"
+                        Template="{DynamicResource BtnTemplate}"/>
+
+                <Button Grid.Row="3" Grid.Column="1" Content="5" 
+                        Style="{DynamicResource BtnStyle}"
+                        Click="btnEvents"
+                        Template="{DynamicResource BtnTemplate}"/>
+
+                <Button Grid.Row="3" Grid.Column="2" Content="6" 
+                        Style="{DynamicResource BtnStyle}"
+                        Click="btnEvents"
+                        Template="{DynamicResource BtnTemplate}"/>
+
+                <Button Grid.Row="4" Grid.Column="0" Content="1" 
+                        Style="{DynamicResource BtnStyle}"
+                        Click="btnEvents"
+                        Template="{DynamicResource BtnTemplate}"/>
+
+                <Button Grid.Row="4" Grid.Column="1" Content="2" 
+                        Style="{DynamicResource BtnStyle}"
+                        Click="btnEvents"
+                        Template="{DynamicResource BtnTemplate}"/>
+
+                <Button Grid.Row="4" Grid.Column="2" Content="3" 
+                        Style="{DynamicResource BtnStyle}"
+                        Click="btnEvents"
+                        Template="{DynamicResource BtnTemplate}"/>
+
+                <Button Grid.Row="5" Grid.Column="1" Content="0" 
+                        Style="{DynamicResource BtnStyle}"
+                        Click="btnEvents"
+                        Template="{DynamicResource BtnTemplate}"/>
+                
+                <!-- кнопки управления -->
+
+                <Button Grid.Row="5" Grid.Column="0" Content="," 
+                        Style="{DynamicResource BtnStyle}"
+                        Click="btnEvents"
+                        Template="{DynamicResource BtnTemplate}"/>
+
+                <Button x:Name="Remove" Grid.Row="5" Grid.Column="2" Content="&lt;-" 
+                        Style="{DynamicResource BtnStyle}"
+                        Click="btnRemove"
+                        Template="{DynamicResource BtnTemplate}"/>
+
+                <Button Grid.Row="1" Grid.Column="0" Content="С" 
+                        Style="{DynamicResource BtnStyle}"
+                        Click="btnClear"
+                        Template="{DynamicResource BtnTemplate}"/>
+
+                <Button Grid.Row="1" Grid.Column="1" Content="%" 
+                        Style="{DynamicResource BtnStyle}"
+                        Click="btnОperandos"
+                        Template="{DynamicResource BtnTemplate}"/>
+
+                <Button Grid.Row="1" Grid.Column="2" Content="/" 
+                        Style="{DynamicResource BtnStyle}"
+                        Click="btnОperand"
+                        FontSize="45"
+                        FontWeight="Bold"
+                        Template="{DynamicResource BtnTemplate}"/>
+
+                <Button Grid.Row="1" Grid.Column="3" Content="*" 
+                        Style="{DynamicResource BtnStyle}"
+                        Click="btnОperand"
+                        FontSize="45"
+                        Template="{DynamicResource BtnTemplate}"/>
+
+                <Button Grid.Row="2" Grid.Column="3" Content="+" 
+                        Style="{DynamicResource BtnStyle}"
+                        FontWeight="Bold"
+                        FontSize="45"
+                        Click="btnОperand"
+                        Template="{DynamicResource BtnTemplate}"/>
+
+                <Button Grid.Row="3" Grid.Column="3" Content="-" 
+                        Style="{DynamicResource BtnStyle}"
+                        FontWeight="Bold"
+                        FontSize="55"
+                        Click="btnОperand"
+                        Template="{DynamicResource BtnTemplate}"/>
+
+                <Button Grid.Row="4" Grid.Column="3" Content="=" 
+                        Grid.RowSpan="2"
+                        Style="{DynamicResource BtnStyle}"
+                        Click="btnCalculation"
+                        Template="{DynamicResource BtnTemplate}"/>
+
+
+
+            </Grid>
+        </Grid>
+
+    </Border>
+</Window>
